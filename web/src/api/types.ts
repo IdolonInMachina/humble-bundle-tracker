@@ -32,6 +32,9 @@ export type SyncStatus = {
     startedAt: number;
     finishedAt: number | null;
     status: "running" | "ok" | "error" | "partial";
+    bundlesSeen: number;
+    itemsAdded: number;
+    itemsUpdated: number;
     error: string | null;
   } | null;
 };
