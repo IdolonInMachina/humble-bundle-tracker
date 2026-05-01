@@ -1,35 +1,47 @@
-import { sqliteTable, text, integer, primaryKey } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text, integer, index } from "drizzle-orm/sqlite-core";
 
-export const bundles = sqliteTable("bundles", {
-  id: text("id").primaryKey(),
-  name: text("name").notNull(),
-  source: text("source", { enum: ["choice", "bundle", "store", "other"] }).notNull(),
-  purchasedAt: integer("purchased_at"),
-  url: text("url"),
-  rawJson: text("raw_json").notNull(),
-  createdAt: integer("created_at").notNull(),
-  updatedAt: integer("updated_at").notNull(),
-});
+export const bundles = sqliteTable(
+  "bundles",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    source: text("source", { enum: ["choice", "bundle", "store", "other"] }).notNull(),
+    purchasedAt: integer("purchased_at"),
+    url: text("url"),
+    rawJson: text("raw_json").notNull(),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (t) => [index("bundles_purchased_at_idx").on(t.purchasedAt)],
+);
 
-export const items = sqliteTable("items", {
-  id: text("id").primaryKey(),
-  bundleId: text("bundle_id")
-    .notNull()
-    .references(() => bundles.id, { onDelete: "cascade" }),
-  name: text("name").notNull(),
-  machineName: text("machine_name").notNull(),
-  platform: text("platform", {
-    enum: ["steam", "gog", "origin", "uplay", "drm-free", "other"],
-  }).notNull(),
-  status: text("status", { enum: ["unclaimed", "revealed", "redeemed"] }).notNull(),
-  keyValue: text("key_value"),
-  claimUrl: text("claim_url"),
-  expiresAt: integer("expires_at"),
-  notes: text("notes"),
-  tags: text("tags"),
-  createdAt: integer("created_at").notNull(),
-  updatedAt: integer("updated_at").notNull(),
-});
+export const items = sqliteTable(
+  "items",
+  {
+    id: text("id").primaryKey(),
+    bundleId: text("bundle_id")
+      .notNull()
+      .references(() => bundles.id, { onDelete: "cascade" }),
+    name: text("name").notNull(),
+    machineName: text("machine_name").notNull(),
+    platform: text("platform", {
+      enum: ["steam", "gog", "origin", "uplay", "drm-free", "other"],
+    }).notNull(),
+    status: text("status", { enum: ["unclaimed", "revealed", "redeemed"] }).notNull(),
+    keyValue: text("key_value"),
+    claimUrl: text("claim_url"),
+    expiresAt: integer("expires_at"),
+    notes: text("notes"),
+    tags: text("tags"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (t) => [
+    index("items_bundle_id_idx").on(t.bundleId),
+    index("items_status_idx").on(t.status),
+    index("items_expires_at_idx").on(t.expiresAt),
+  ],
+);
 
 export const syncRuns = sqliteTable("sync_runs", {
   id: integer("id").primaryKey({ autoIncrement: true }),
