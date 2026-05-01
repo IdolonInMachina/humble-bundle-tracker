@@ -31,3 +31,6 @@ Thumbs.db
 # Coverage / test output
 coverage/
 .bun/
+
+# MCP/Playwright snapshot output
+.playwright-mcp/

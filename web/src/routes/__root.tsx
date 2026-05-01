@@ -8,6 +8,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { api } from "../api/client";
+import { SyncIndicator } from "../components/SyncIndicator";
 
 export const Route = createRootRoute({
   component: Shell,
@@ -53,6 +54,9 @@ function Shell() {
         </nav>
       </aside>
       <main className="flex-1 p-6">
+        <div className="flex justify-end mb-4">
+          <SyncIndicator />
+        </div>
         {settings.data &&
           !settings.data.hasCookie &&
           !location.pathname.startsWith("/settings") && (
