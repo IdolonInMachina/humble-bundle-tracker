@@ -1,8 +1,11 @@
 import { Hono } from "hono";
 import { serveStatic } from "hono/bun";
 import { health } from "./routes/health.ts";
+import { settingsRoutes } from "./routes/settings.ts";
 
-const api = new Hono().route("/health", health);
+const api = new Hono()
+  .route("/health", health)
+  .route("/settings", settingsRoutes);
 
 export const app = new Hono()
   .route("/api", api)
