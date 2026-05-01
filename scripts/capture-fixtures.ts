@@ -18,6 +18,12 @@ async function get(url: string): Promise<unknown> {
   return res.json();
 }
 
+async function tryGet(url: string): Promise<unknown | null> {
+  const res = await fetch(url, { headers });
+  if (!res.ok) return null;
+  return res.json();
+}
+
 function sanitize(data: unknown): unknown {
   return JSON.parse(
     JSON.stringify(data).replace(
@@ -47,14 +53,31 @@ await writeFile(
   JSON.stringify(sanitize(subs), null, 2)
 );
 
-const firstKey = (orders as Array<{ gamekey: string }>)[0]?.gamekey;
-if (firstKey) {
-  const detail = await get(
-    `https://www.humblebundle.com/api/v1/orders/${firstKey}?all_tpkds=true`
+// Walk gamekeys until we find ones that return 200. Some keys 404 (migrated /
+// deleted orders, sub-only keys hitting the wrong endpoint, etc.). We want a
+// few diverse fixtures so the parser sees both Choice months and bundle/store
+// orders if present.
+const orderKeys = (orders as Array<{ gamekey: string }>).map((o) => o.gamekey);
+const subKeys = (subs as Array<{ gamekey: string }>).map((o) => o.gamekey);
+const allKeys = [...orderKeys, ...subKeys];
+
+const TARGET_FIXTURES = 3;
+let captured = 0;
+let skipped = 0;
+for (const key of allKeys) {
+  if (captured >= TARGET_FIXTURES) break;
+  const detail = await tryGet(
+    `https://www.humblebundle.com/api/v1/orders/${key}?all_tpkds=true`
   );
+  if (detail === null) {
+    skipped++;
+    continue;
+  }
   await writeFile(
-    `tests/fetcher/fixtures/order-${firstKey}.json`,
+    `tests/fetcher/fixtures/order-${key}.json`,
     JSON.stringify(sanitize(detail), null, 2)
   );
-  console.log(`captured detail for order ${firstKey}`);
+  console.log(`captured detail for order ${key}`);
+  captured++;
 }
+console.log(`done: ${captured} order details captured, ${skipped} skipped (404)`);
