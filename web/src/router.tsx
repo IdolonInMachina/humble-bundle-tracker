@@ -2,6 +2,8 @@ import { createRouter, createRoute, redirect } from "@tanstack/react-router";
 import { Route as RootRoute } from "./routes/__root";
 import { Route as LibraryRoute } from "./routes/Library";
 import { Route as SettingsRoute } from "./routes/Settings";
+import { Route as BundlesRoute } from "./routes/Bundles";
+import { Route as BundleDetailRoute } from "./routes/BundleDetail";
 
 const indexRedirect = createRoute({
   getParentRoute: () => RootRoute,
@@ -14,6 +16,8 @@ const indexRedirect = createRoute({
 const routeTree = RootRoute.addChildren([
   LibraryRoute,
   SettingsRoute,
+  BundlesRoute,
+  BundleDetailRoute,
   indexRedirect,
 ]);
 

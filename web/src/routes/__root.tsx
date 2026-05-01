@@ -9,9 +9,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { api } from "../api/client";
 
-// Sidebar links to /bundles, /expiring, /unclaimed use plain <a> because those
-// routes are added in later tasks (19, 20, 21). Once registered, they should
-// migrate to <Link> for typed navigation.
+// Sidebar links to /expiring, /unclaimed use plain <a> because those routes are
+// added in later tasks (20, 21). Once registered, they should migrate to <Link>
+// for typed navigation.
 export const Route = createRootRoute({
   component: Shell,
 });
@@ -41,9 +41,9 @@ function Shell() {
           <Link to="/library" className="[&.active]:font-semibold">
             Library
           </Link>
-          <a href="/bundles" className="hover:underline">
+          <Link to="/bundles" className="[&.active]:font-semibold">
             Bundles
-          </a>
+          </Link>
           <a href="/expiring" className="hover:underline">
             Expiring
           </a>
