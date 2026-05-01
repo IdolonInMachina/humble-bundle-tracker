@@ -21,9 +21,7 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
 
-    /* Path alias for shadcn (baseUrl deprecated in TS 6 but still required by shadcn) */
-    "ignoreDeprecations": "6.0",
-    "baseUrl": ".",
+    /* Path alias for shadcn */
     "paths": {
       "@/*": ["./src/*"]
     }
