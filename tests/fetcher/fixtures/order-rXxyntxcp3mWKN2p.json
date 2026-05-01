@@ -82,8 +82,8 @@
               "uploaded_at": "2022-03-05T02:28:01.705076",
               "name": "Download",
               "url": {
-                "web": "https://cdn.humble.com/humblebundle/Divinoids_new.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=726d99c2dcc89426b79c90e9b4b403026d90b293e1ae9bf49851f367b98a9c15",
-                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/Divinoids_new.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=b9af18b88ea70f017d7cef60af12f530515a12e355e6777256ea3b10fd14703e"
+                "web": "https://cdn.humble.com/humblebundle/Divinoids_new.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777636500~exp=1777722900~hmac=16f0d4c5f36d4a39f15f32a116ab8a68f5464d2bc6ea71bde21daf4f4a21ceee",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/Divinoids_new.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777636500~exp=1777722900~hmac=95f1a4492564f362a9033a5e51c8e7b23ee95b59ac1a268a865b8a2e94ed7430"
               },
               "timestamp": 1646447329,
               "builds": [
@@ -176,8 +176,8 @@
               "uploaded_at": "2020-02-26T21:55:22.482240",
               "name": "64-bit",
               "url": {
-                "web": "https://cdn.humble.com/humblebundle/flazm_lrl96/train-valley-2-humble-win64.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=2e5d7a7b0ee834bacdfce3fdbf7895b343e14595e010a129dd21ea19751c4d8f",
-                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/flazm_lrl96/train-valley-2-humble-win64.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=8007b34fb85211b04e504ff41fcad32223e98882283239168a83d991ae4b465b"
+                "web": "https://cdn.humble.com/humblebundle/flazm_lrl96/train-valley-2-humble-win64.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777636500~exp=1777722900~hmac=d1637371ce1f033ac251f7ed0a6bf3d05d8bc99efa24f3ad1de408611db2755c",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/flazm_lrl96/train-valley-2-humble-win64.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777636500~exp=1777722900~hmac=3873ff95a3b0121245ac05e27bf2f072993c2706111a518d1175c60d10d2c423"
               },
               "timestamp": 1582754254,
               "small": 0,
@@ -200,8 +200,8 @@
               "uploaded_at": "2020-02-26T21:58:04.710284",
               "name": "32-bit",
               "url": {
-                "web": "https://cdn.humble.com/humblebundle/flazm_lrl96/train-valley-2-humble-win32.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=8c7799013ee9830cc8294bd4e9e3b62d46cffd59a08d790b0b0e3c49651aff11",
-                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/flazm_lrl96/train-valley-2-humble-win32.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=b814cc1c29d5dee5e72996f01b4f8fa70c008a760b5355e68dd68e6667cc616b"
+                "web": "https://cdn.humble.com/humblebundle/flazm_lrl96/train-valley-2-humble-win32.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777636500~exp=1777722900~hmac=6567ef769894287574b656a159d9b22bb4ce6631669deaa1575e2ec8e7607215",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/flazm_lrl96/train-valley-2-humble-win32.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777636500~exp=1777722900~hmac=def3da336e8e4f8e2736621e547df5d17e0645857bb32731e2eb9670c156002c"
               },
               "timestamp": 1582754392,
               "human_size": "274.1 MB",
@@ -223,8 +223,8 @@
               "uploaded_at": "2020-02-26T22:00:48.136142",
               "name": "Download",
               "url": {
-                "web": "https://cdn.humble.com/humblebundle/flazm_lrl96/train-valley-2-humble-mac.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=0e15b709ebfd084c61f82c22a8695da4bc58bd54e84bd637833ea690834d5140",
-                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/flazm_lrl96/train-valley-2-humble-mac.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=c71aa4f50adb8b918c0c3f488abc79e60d69e869ec17e6817e4b5f4e9870bff0"
+                "web": "https://cdn.humble.com/humblebundle/flazm_lrl96/train-valley-2-humble-mac.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777636500~exp=1777722900~hmac=8f386ebfc6123330aa19eca600483a9a5b39fedff008f730097dd9b84dff3352",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/flazm_lrl96/train-valley-2-humble-mac.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777636500~exp=1777722900~hmac=eb027f9daaefca8e2a2c4e93f3f9d0dcd8bce34fee340b8eff91f0260137ebbe"
               },
               "timestamp": 1582754560,
               "human_size": "291.9 MB",
@@ -246,8 +246,8 @@
               "uploaded_at": "2020-02-26T22:15:16.680469",
               "name": "Download",
               "url": {
-                "web": "https://cdn.humble.com/humblebundle/flazm_lrl96/train-valley-2-humble-linux.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=9682e2f617265a57b878d9c5ddd1fdceb07bce459ed3ea56b17f750bf4dc9837",
-                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/flazm_lrl96/train-valley-2-humble-linux.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=78daa95ac53176b0ac73fd3a34799641747d8a5c2d50be55a6f9f39644c725b2"
+                "web": "https://cdn.humble.com/humblebundle/flazm_lrl96/train-valley-2-humble-linux.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777636500~exp=1777722900~hmac=e813e17fe36ac7ca108f8c086f9b58ff441b19fd37773db86579b9c385dd62f3",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/flazm_lrl96/train-valley-2-humble-linux.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777636500~exp=1777722900~hmac=73d15d09d15b104cb85db8e8c7c403d740f0ffa7ad589b729b0dc243b2d244ad"
               },
               "timestamp": 1582755465,
               "human_size": "330.7 MB",
@@ -284,8 +284,8 @@
               "uploaded_at": "2020-04-17T15:31:36.640816",
               "name": "Download",
               "url": {
-                "web": "https://cdn.humble.com/humblebundle/PC-RingOfPain-0.8.21-DEMO-HC.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=8e60e3ee0ddfbe6f821b9db0448e7892c98dfcd6ec432d007ef2872bd971c32e",
-                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/PC-RingOfPain-0.8.21-DEMO-HC.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=9c67c2f90e45c52757e7874fcf1b1e9443a049817fd2405ecd3ee02572e65fcc"
+                "web": "https://cdn.humble.com/humblebundle/PC-RingOfPain-0.8.21-DEMO-HC.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777636500~exp=1777722900~hmac=dd1b762b86c6eb432af5ad2391de9f3a53b56daf707e2d0c725f44f7b2768269",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/PC-RingOfPain-0.8.21-DEMO-HC.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777636500~exp=1777722900~hmac=ec4ba2b1ed64052e362325390e2190793c6b6a7115a92c0ee08d652852cde62a"
               },
               "timestamp": 1587137635,
               "human_size": "309.6 MB",

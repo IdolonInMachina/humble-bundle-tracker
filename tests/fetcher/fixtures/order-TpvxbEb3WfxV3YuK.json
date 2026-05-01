@@ -46,8 +46,8 @@
               "sha1": "d17f50079494e180168390e21c23f54da6052b13",
               "name": "Download",
               "url": {
-                "web": "https://cdn.humble.com/humblebundle/roguemansion_V1.3.rar?gamekey=TpvxbEb3WfxV3YuK&t=st=1777635828~exp=1777722228~hmac=2ba0189c1c1d21d6f6109dab5baeaa011b7f728cbf51454fe0a63b7c16243917",
-                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/roguemansion_V1.3.rar.torrent?gamekey=TpvxbEb3WfxV3YuK&t=st=1777635828~exp=1777722228~hmac=a242feb48473c1253395ea997aa3de3d28613d7b15c6a86201c1bb476973ba93"
+                "web": "https://cdn.humble.com/humblebundle/roguemansion_V1.3.rar?gamekey=TpvxbEb3WfxV3YuK&t=st=1777636500~exp=1777722900~hmac=310494851e5258e724ff306b9d90c6d9ab9dcf1e0229a637384b5086eedbd49b",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/roguemansion_V1.3.rar.torrent?gamekey=TpvxbEb3WfxV3YuK&t=st=1777636500~exp=1777722900~hmac=a0f0cd843d39c271e2aded09fba3d9581d1da49fcf860dc8b0f0b1f411c0b76b"
               },
               "timestamp": 1618877572,
               "file_size": 163843906,

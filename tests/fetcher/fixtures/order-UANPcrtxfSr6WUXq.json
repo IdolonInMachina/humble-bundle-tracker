@@ -1,0 +1,47 @@
+{
+  "amount_spent": 0,
+  "product": {
+    "category": "subscriptioncontent",
+    "machine_name": "march_2026_choice",
+    "empty_tpkds": {},
+    "choice_url": "march-2026",
+    "post_purchase_text": "",
+    "partial_gift_enabled": true,
+    "human_name": "March 2026 Humble Choice",
+    "is_subs_v2_product": false,
+    "is_subs_v3_product": true
+  },
+  "gamekey": "UANPcrtxfSr6WUXq",
+  "uid": "A6620UTXVRUBJ",
+  "created": "2026-03-30T16:34:47.308405",
+  "missed_credit": null,
+  "subproducts": [
+    {
+      "machine_name": "10percentoff_residentevilrequiem",
+      "url": "https://www.humblebundle.com/home/coupons",
+      "downloads": [],
+      "library_family_name": "",
+      "payee": {
+        "human_name": "Humble Bundle",
+        "machine_name": "humblebundle"
+      },
+      "human_name": "10% off Resident Evil Requiem",
+      "custom_download_page_box_css": "",
+      "custom_download_page_box_html": "<p>Your 10% off Resident Evil Requiem Coupon is ready to go! Simply add the item to your cart, and your discount will be applied automatically during checkout.</p>",
+      "icon": "https://hb.imgix.net/88a641d16635327871948789353c3343cb136f5c.png?auto=compress,format&s=dbd32b08ebccdb034397585b06f53366"
+    }
+  ],
+  "total_choices": 0,
+  "tpkd_dict": {
+    "all_tpks": []
+  },
+  "choices_remaining": 0,
+  "currency": "USD",
+  "is_giftee": false,
+  "claimed": true,
+  "total": 11.666666666666666,
+  "path_ids": [
+    "5545995372789760",
+    "6461378011267072"
+  ]
+}
