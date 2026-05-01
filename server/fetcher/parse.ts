@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import type { ChoiceMenu } from "./extract-choice-menu.ts";
 
 type RawTpk = {
   machine_name: string;
@@ -112,7 +113,7 @@ function parseDate(s: string | null | undefined): number | null {
   return Number.isFinite(ms) ? ms : null;
 }
 
-export function parseOrder(raw: RawOrder): ParseResult {
+export function parseOrder(raw: RawOrder, menu?: ChoiceMenu): ParseResult {
   const bundleId = raw.gamekey;
   const bundle: ParsedBundle = {
     id: bundleId,
@@ -155,6 +156,29 @@ export function parseOrder(raw: RawOrder): ParseResult {
       claimUrl: sp.url ?? bundle.url,
       expiresAt: null,
     });
+  }
+
+  // For Humble Choice months, the order detail endpoint only returns extras
+  // (DLC discount codes) and any tpkds the user has already revealed. The
+  // selectable menu of games for the month is scraped separately from
+  // /membership/<slug>; merge those entries here, deduping against anything
+  // the user has already revealed/redeemed (which is keyed by machineName).
+  if (menu && bundle.source === "choice") {
+    for (const game of menu.games) {
+      if (seenMachineNames.has(game.machineName)) continue;
+      seenMachineNames.add(game.machineName);
+      items.push({
+        id: hashId(bundleId, game.machineName),
+        bundleId,
+        name: game.title,
+        machineName: game.machineName,
+        platform: game.platform,
+        status: "unclaimed",
+        keyValue: null,
+        claimUrl: bundle.url,
+        expiresAt: null,
+      });
+    }
   }
 
   return { bundle, items };

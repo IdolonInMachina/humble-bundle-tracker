@@ -6,6 +6,8 @@
 
 **Architecture:** Single Bun process. Hono server hosts `/api/*` and serves the built React bundle from `/`. CookieFetcher hits Humble's internal JSON endpoints, parses, upserts into SQLite via Drizzle. Async single-flight sync runner; UI polls status. PlaywrightFetcher exists as a stub behind the same interface.
 
+**Post-v0.1 discovery — Humble Choice menu source.** The order detail endpoint (`/api/v1/order/<key>?all_tpkds=true`) does NOT include the selectable game menu for Humble Choice months — it only returns `extras` (DLC discount codes) and any tpkds the user has already revealed. The actual menu lives in the `/membership/<slug>` HTML page (where `slug` is `product.choice_url`, e.g. `april-2026`), embedded in a `<script id="webpack-monthly-product-data">` tag. The blob path is `contentChoiceOptions.contentChoiceData.{display_order, game_data}`, and `game_data[machine_name]` exposes `title` and `delivery_methods`. Note: the user's email is also embedded in this HTML, so responses must NEVER be logged verbatim and any captured fixtures must be sanitised. The CookieFetcher in Task 11 scrapes this page (best-effort — failure falls back to extras-only) and passes the parsed menu into `parseOrder` as a second argument; `parseOrder` merges menu games as `unclaimed` items, deduped against revealed/redeemed entries by `machineName`. The extractor itself lives at `server/fetcher/extract-choice-menu.ts` with tests at `tests/fetcher/extract-choice-menu.test.ts`.
+
 **Tech Stack:** Bun, TypeScript, Hono, Drizzle, `bun:sqlite` (with FTS5), Vite, React, Tailwind, shadcn/ui, TanStack Query, TanStack Router, `bun test`.
 
 **Spec:** `docs/superpowers/specs/2026-05-01-humble-bundle-tracker-design.md`.
@@ -1351,6 +1353,7 @@ import type { Fetcher, SyncOpts, SyncReport } from "./types.ts";
 import { CookieExpiredError } from "./types.ts";
 import { parseOrder } from "./parse.ts";
 import { upsertParsed } from "./upsert.ts";
+import { extractChoiceMenu, type ChoiceMenu } from "./extract-choice-menu.ts";
 import { getCookie } from "../db/settings.ts";
 
 const BASE = "https://www.humblebundle.com";
@@ -1414,6 +1417,24 @@ export class CookieFetcher implements Fetcher {
       return res.json();
     };
 
+    // The Choice menu lives in the /membership/<slug> HTML page rather than
+    // any JSON API; we deliberately don't surface this as a hard error since
+    // the user's email is embedded in the response and a soft fall-back to
+    // extras-only is preferable to failing the order outright.
+    const fetchHtml = async (path: string): Promise<string | null> => {
+      try {
+        const res = await fetch(`${BASE}${path}`, {
+          headers: { ...headers, Accept: "text/html" },
+        });
+        if (!res.ok) return null;
+        const ct = res.headers.get("content-type") ?? "";
+        if (!ct.includes("html")) return null;
+        return await res.text();
+      } catch {
+        return null;
+      }
+    };
+
     // List all order gamekeys (also serves as the cookie health check —
     // 401/non-JSON throws CookieExpiredError).
     const orders = await fetchJson("/api/v1/user/order");
@@ -1427,13 +1448,28 @@ export class CookieFetcher implements Fetcher {
 
     // 4. fetch + parse each, tolerating per-order failures.
     // The order-detail endpoint is singular `/order/`, not plural — the plural
-    // form 404s for every key.
+    // form 404s for every key. For Humble Choice months we additionally scrape
+    // /membership/<slug> for the selectable game menu (extras-only fall-back
+    // if the scrape fails); see the post-v0.1 discovery note at the top.
     let partial = false;
     const errors: string[] = [];
     const parsed = await pmap(allKeys, CONCURRENCY, async (key) => {
       try {
         const detail = await fetchJson(`/api/v1/order/${key}?all_tpkds=true`);
-        return parseOrder(detail as Parameters<typeof parseOrder>[0]);
+        const detailObj = detail as {
+          product?: { category?: string; choice_url?: string };
+        };
+        let menu: ChoiceMenu | null = null;
+        const category = detailObj.product?.category;
+        const slug = detailObj.product?.choice_url;
+        if (category === "subscriptioncontent" && typeof slug === "string" && slug) {
+          const html = await fetchHtml(`/membership/${slug}`);
+          if (html) menu = extractChoiceMenu(html);
+        }
+        return parseOrder(
+          detail as Parameters<typeof parseOrder>[0],
+          menu ?? undefined,
+        );
       } catch (e) {
         partial = true;
         errors.push(`${key}: ${(e as Error).message}`);
@@ -1814,7 +1850,9 @@ export type AppType = typeof app;
 
 if (import.meta.main) {
   const port = Number(process.env.PORT ?? 5173);
-  Bun.serve({ port, fetch: app.fetch });
+  // Default Bun idle timeout (10s) hangs up long syncs that take 20-30s+
+  // against Humble's API. 60s is generous but safe.
+  Bun.serve({ port, fetch: app.fetch, idleTimeout: 60 });
   console.log(`server listening on http://localhost:${port}`);
   maybeKickStaleSync(runner).catch((e) => console.error("startup sync failed", e));
 }

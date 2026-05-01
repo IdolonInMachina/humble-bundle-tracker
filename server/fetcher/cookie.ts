@@ -2,6 +2,7 @@ import type { Fetcher, SyncOpts, SyncReport } from "./types.ts";
 import { CookieExpiredError } from "./types.ts";
 import { parseOrder } from "./parse.ts";
 import { upsertParsed } from "./upsert.ts";
+import { extractChoiceMenu, type ChoiceMenu } from "./extract-choice-menu.ts";
 import { getCookie } from "../db/settings.ts";
 
 const BASE = "https://www.humblebundle.com";
@@ -65,6 +66,24 @@ export class CookieFetcher implements Fetcher {
       return res.json();
     };
 
+    // The Choice menu lives in the /membership/<slug> HTML page rather than
+    // any JSON API. We deliberately don't surface this as a hard error: the
+    // user's email is embedded in the HTML, and a soft fall-back to the
+    // existing extras-only behaviour is preferable to failing the order.
+    const fetchHtml = async (path: string): Promise<string | null> => {
+      try {
+        const res = await fetch(`${BASE}${path}`, {
+          headers: { ...headers, Accept: "text/html" },
+        });
+        if (!res.ok) return null;
+        const ct = res.headers.get("content-type") ?? "";
+        if (!ct.includes("html")) return null;
+        return await res.text();
+      } catch {
+        return null;
+      }
+    };
+
     // List all order gamekeys (also serves as the cookie health check —
     // 401/non-JSON throws CookieExpiredError).
     const orders = await fetchJson("/api/v1/user/order");
@@ -84,7 +103,23 @@ export class CookieFetcher implements Fetcher {
     const parsed = await pmap(allKeys, CONCURRENCY, async (key) => {
       try {
         const detail = await fetchJson(`/api/v1/order/${key}?all_tpkds=true`);
-        return parseOrder(detail as Parameters<typeof parseOrder>[0]);
+        const detailObj = detail as {
+          product?: { category?: string; choice_url?: string };
+        };
+        // Choice months expose a slug (`choice_url`) plus the
+        // `subscriptioncontent` category. Extras-only behaviour is the
+        // fall-back if either piece is missing or the scrape fails.
+        let menu: ChoiceMenu | null = null;
+        const category = detailObj.product?.category;
+        const slug = detailObj.product?.choice_url;
+        if (category === "subscriptioncontent" && typeof slug === "string" && slug) {
+          const html = await fetchHtml(`/membership/${slug}`);
+          if (html) menu = extractChoiceMenu(html);
+        }
+        return parseOrder(
+          detail as Parameters<typeof parseOrder>[0],
+          menu ?? undefined,
+        );
       } catch (e) {
         partial = true;
         errors.push(`${key}: ${(e as Error).message}`);
