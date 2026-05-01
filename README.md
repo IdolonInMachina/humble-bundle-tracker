@@ -8,9 +8,8 @@ Single-user, runs on `localhost`, credentials stay on the machine.
 
 ## Status
 
-In development. Design is approved and lives at
+v0.1 functional. Design lives at
 [`docs/superpowers/specs/2026-05-01-humble-bundle-tracker-design.md`](docs/superpowers/specs/2026-05-01-humble-bundle-tracker-design.md).
-Implementation plan + code to follow.
 
 ## Stack
 
@@ -33,10 +32,30 @@ is no telemetry, no auth, no multi-user, no auto-claim.
 
 ## Run
 
-Coming soon. Will be roughly:
-
 ```sh
 bun install
-bun run dev      # dev with hot reload
-bun run start    # production build, single port
+bun run db:migrate                  # one-time, creates ./data/humble.db
+bun run dev                         # dev mode: server + vite, live reload
+# or
+cd web && bun run build && cd ..
+PORT=5173 bun run start             # production: single port, serves built UI
 ```
+
+Open http://localhost:5173, paste your `_simpleauth_sess` cookie in
+**Settings**, then click Refresh. Subsequent launches will auto-sync if data
+is older than the configured interval (default 6h).
+
+Note: `bun run dev` chains the backgrounded server with Vite in one shell, so
+Ctrl-C can orphan the server. For a cleaner dev loop, run
+`bun run dev:server` and `bun run dev:web` in separate terminals.
+
+## Cookie
+
+In a browser logged into humblebundle.com:
+
+1. Open DevTools → Application → Cookies → `https://www.humblebundle.com`
+2. Copy the **value** of `_simpleauth_sess`
+3. Paste it into the app's Settings page
+
+The cookie lasts months in practice. When it expires, you'll see a banner —
+re-paste a fresh value.
