@@ -1,0 +1,101 @@
+{
+  "amount_spent": 0,
+  "product": {
+    "category": "subscriptioncontent",
+    "machine_name": "april_2021_choice",
+    "empty_tpkds": {},
+    "choice_url": "april-2021",
+    "post_purchase_text": "",
+    "partial_gift_enabled": true,
+    "human_name": "April 2021 Humble Choice",
+    "is_subs_v2_product": true,
+    "is_subs_v3_product": false
+  },
+  "gamekey": "TpvxbEb3WfxV3YuK",
+  "uid": "ABRMUZCYBVFDB",
+  "created": "2021-04-27T19:03:11.275194",
+  "missed_credit": null,
+  "subproducts": [
+    {
+      "display_item": {
+        "publishers": null,
+        "description-text": "<p><em>Rogue Mansion</em> is a survival horror game mixed with rogue-like mechanics. Fight all kinds of creatures, solve enigmatic puzzles and look for anything that could be useful to escape alive from the ever-changing interiors of a mysterious mansion.<br><br>KEY FEATURES<br>Experience the game in different ways by choosing among multiple characters with their own equipment and unique perks. Note: There's only one character available in the sneak peek version of the game.<br><br>Explore a procedurally generated mansion that is different every time you play, and also becomes more dangerous and unpredictable based on your level of fear.<br><br>Manage your resources, solve puzzles, fight all forms of creatures and find a way out while you unravel the mysteries of the mansion.<br><br>Immerse yourself in a creepy atmosphere created by the combination of a stylish retro aesthetic with an added modern touch.</p>",
+        "developers": [
+          {
+            "developer-name": "Almenara Games",
+            "developer-url": "https://www.almenaragames.com/rogue-mansion"
+          }
+        ],
+        "image": "https://hb.imgix.net/1f62739adfe0c8cb7838ca737540ba156762587d.png?auto=compress,format&fit=crop&h=353&w=616&s=75be10c432f2f2b9588b88dee486133c",
+        "carousel-content": {
+          "youtube-link": [
+            "Ef9I0L5eREw"
+          ],
+          "thumbnail": [],
+          "screenshot": []
+        }
+      },
+      "machine_name": "roguemansion",
+      "url": "https://www.almenaragames.com/rogue-mansion",
+      "downloads": [
+        {
+          "desktop_app_only": false,
+          "machine_name": "roguemansion_windows",
+          "download_struct": [
+            {
+              "sha1": "d17f50079494e180168390e21c23f54da6052b13",
+              "name": "Download",
+              "url": {
+                "web": "https://cdn.humble.com/humblebundle/roguemansion_V1.3.rar?gamekey=TpvxbEb3WfxV3YuK&t=st=1777635828~exp=1777722228~hmac=2ba0189c1c1d21d6f6109dab5baeaa011b7f728cbf51454fe0a63b7c16243917",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/roguemansion_V1.3.rar.torrent?gamekey=TpvxbEb3WfxV3YuK&t=st=1777635828~exp=1777722228~hmac=a242feb48473c1253395ea997aa3de3d28613d7b15c6a86201c1bb476973ba93"
+              },
+              "timestamp": 1618877572,
+              "file_size": 163843906,
+              "small": 1,
+              "human_size": "156.3 MB",
+              "uploaded_at": "2021-04-20T00:11:26.967254",
+              "build_version": 1,
+              "md5": "30f432374593af8c03e6bfd7448055ca",
+              "builds": [
+                {
+                  "signature_file": "roguemansion_windows_1.sig",
+                  "filename": "client/roguemansion_V1.3.zip",
+                  "download_file_size": 177841498,
+                  "build_version": 1,
+                  "installed_file_size": 236588554,
+                  "executable_path": "Rogue Mansion - Sneak Peek.exe"
+                }
+              ]
+            }
+          ],
+          "options_dict": {},
+          "download_identifier": "",
+          "platform": "windows",
+          "download_version_number": null
+        }
+      ],
+      "library_family_name": "",
+      "payee": {
+        "human_name": "Angel Test Account",
+        "machine_name": "humble_games_RcP9v"
+      },
+      "human_name": "Rogue Mansion",
+      "custom_download_page_box_css": "",
+      "custom_download_page_box_html": "",
+      "icon": "https://hb.imgix.net/d0a90e3f7ab77ef8238bd4405b14066b87292900.png?auto=compress,format&s=7f87703e91e5b53462cd8e1afedea6bf"
+    }
+  ],
+  "total_choices": 12,
+  "tpkd_dict": {
+    "all_tpks": []
+  },
+  "choices_remaining": 12,
+  "currency": "USD",
+  "is_giftee": false,
+  "claimed": true,
+  "total": 11.666666666666666,
+  "path_ids": [
+    "6341814137716736",
+    "6286933954723840"
+  ]
+}

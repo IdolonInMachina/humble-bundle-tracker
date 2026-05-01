@@ -1,0 +1,351 @@
+{
+  "amount_spent": 0,
+  "product": {
+    "category": "subscriptioncontent",
+    "machine_name": "april_2020_choice",
+    "empty_tpkds": {},
+    "choice_url": "april-2020",
+    "post_purchase_text": "",
+    "partial_gift_enabled": true,
+    "human_name": "April 2020 Humble Choice",
+    "is_subs_v2_product": true,
+    "is_subs_v3_product": false
+  },
+  "gamekey": "rXxyntxcp3mWKN2p",
+  "uid": "AN534QHGH9CK2",
+  "created": "2020-04-24T22:16:41.131782",
+  "missed_credit": null,
+  "subproducts": [
+    {
+      "display_item": {
+        "publishers": [
+          {
+            "publisher-name": "Catpad"
+          }
+        ],
+        "description-text": "Choose from a selection of <i>Divinoids</i>, mechanical shapeshifting gods and mythical creatures, and conquer everything in your path.<br>\n<ul>\n<li>Retro arcade look and feel, with modern gameplay sensibilities. </li>\n<li>Quickly shapeshift between god and beast form, doubling your attack and mobility options. </li>\n<li>Simultaneous, four player local co-op. </li>\n<li>Dozens of active and passive modules and weapons, some with different effects depending on your current form. </li>\n<li>Challenging, but fair. </li>\n<li>Procedurally generated worlds and stages greatly enhance replayability.</li>\n</ul>",
+        "developers": [
+          {
+            "developer-name": "Catpad"
+          }
+        ],
+        "image": "https://hb.imgix.net/dcbd1c149522da551cd5c94c304db6bdcf8b327b.jpeg?auto=compress,format&fit=crop&h=353&w=616&s=2ac408e32c3133e893c79efaafd23797",
+        "carousel-content": {
+          "youtube-link": [
+            "Pl0--OpBaHs"
+          ],
+          "asm-demo-machine-name": [],
+          "thumbnail": [
+            "https://hb.imgix.net/e1a6f3ae9f4d9d51fde4aff0a72d60e3bde58590.jpg?auto=compress,format&fit=crop&h=59&w=105&s=371e24523d16ba603fb05fd05f3fcc25",
+            "https://hb.imgix.net/7221aee8e588cf3d3508993c5253eed3aa08e466.jpg?auto=compress,format&fit=crop&h=59&w=105&s=2cded7612badd087a0715bb621689582",
+            "https://hb.imgix.net/e7eb85aea90aaf33677000c63d572dc199e434f7.jpg?auto=compress,format&fit=crop&h=59&w=105&s=8855b9ba2d9795a0ed01e7f1bec7a792",
+            "https://hb.imgix.net/0d9e3249970aaeecadaef8302dad8c52b1b375d1.jpg?auto=compress,format&fit=crop&h=59&w=105&s=368d402285a5c9f2d80d00dde6d2e1dc",
+            "https://hb.imgix.net/0dc7b3ede0e3a68fe138bebcc8a82d78b48bc68a.jpg?auto=compress,format&fit=crop&h=59&w=105&s=c4a519db10f9b678609b767ccb8a83f5",
+            "https://hb.imgix.net/a3cfc36e2b7da39237fbe4bd2c8d056f80e88232.jpg?auto=compress,format&fit=crop&h=59&w=105&s=56c08d71d36b7d4d75424cf44d18c8d1",
+            "https://hb.imgix.net/d563a3074c518f08417dc15021690ee2d2f250a5.jpg?auto=compress,format&fit=crop&h=59&w=105&s=01dacd7b93719f2e0817dfb96f75ae88",
+            "https://hb.imgix.net/8dc244c2b51ff12b87d5141373af2ffccb0e099b.jpg?auto=compress,format&fit=crop&h=59&w=105&s=f2b9d2b6bef5eb204335d8a9ba013ec9",
+            "https://hb.imgix.net/06bd4991ca6f940dc74c7acca3c9b6f4966014a1.jpg?auto=compress,format&fit=crop&h=59&w=105&s=f309ac97c43a6fdd26666e96ea014667",
+            "https://hb.imgix.net/91a5930974a90990b70ab77b57a9212deafbbaba.jpg?auto=compress,format&fit=crop&h=59&w=105&s=9f9b9f810486d7d90f9183da5c42bace",
+            "https://hb.imgix.net/d8ea5c1f8698cbaa1e13b1d003faa2e5a3d1cfec.jpg?auto=compress,format&fit=crop&h=59&w=105&s=873d69df558bf51917ccf43c8199ef60",
+            "https://hb.imgix.net/90cc78ce17c0934748d028e064971cace67d6d65.jpg?auto=compress,format&fit=crop&h=59&w=105&s=3b9393b6321201c5f49b2b2ef970ef01",
+            "https://hb.imgix.net/f705ecc8c38ffbaee89456a55b591d4ed56e6c28.jpg?auto=compress,format&fit=crop&h=59&w=105&s=6facb656086f6c4e6feb9c169f228fa4",
+            "https://hb.imgix.net/ae7be49b47c0c642ca82cdd3cfc32af3c55bd65b.jpg?auto=compress,format&fit=crop&h=59&w=105&s=a2bfbf17b4c265210d5f478214100495",
+            "https://hb.imgix.net/e6baf5892646915d8b04deb4880b8da66c38cb8c.jpg?auto=compress,format&fit=crop&h=59&w=105&s=97f53a024d3bee9700d5412228a5d38c"
+          ],
+          "screenshot": [
+            "https://hb.imgix.net/e1a6f3ae9f4d9d51fde4aff0a72d60e3bde58590.jpg?auto=compress,format&fit=crop&h=314&w=570&s=d3bde114c1e02875c0d069575309cbd3",
+            "https://hb.imgix.net/7221aee8e588cf3d3508993c5253eed3aa08e466.jpg?auto=compress,format&fit=crop&h=314&w=570&s=a934a95a6d09c4e4ad3cdfd8bcb6c716",
+            "https://hb.imgix.net/e7eb85aea90aaf33677000c63d572dc199e434f7.jpg?auto=compress,format&fit=crop&h=314&w=570&s=51e4da8af9187707f133d65e7624faff",
+            "https://hb.imgix.net/0d9e3249970aaeecadaef8302dad8c52b1b375d1.jpg?auto=compress,format&fit=crop&h=314&w=570&s=e02b596a66c51555b1fccc4424dc50b8",
+            "https://hb.imgix.net/0dc7b3ede0e3a68fe138bebcc8a82d78b48bc68a.jpg?auto=compress,format&fit=crop&h=314&w=570&s=8bbef5bdea1162575dd125767ace4a2c",
+            "https://hb.imgix.net/a3cfc36e2b7da39237fbe4bd2c8d056f80e88232.jpg?auto=compress,format&fit=crop&h=314&w=570&s=4753dd5bc5dd41794722771e335f860a",
+            "https://hb.imgix.net/d563a3074c518f08417dc15021690ee2d2f250a5.jpg?auto=compress,format&fit=crop&h=314&w=570&s=a68ee6c0edb24b7425a856eb1283385e",
+            "https://hb.imgix.net/8dc244c2b51ff12b87d5141373af2ffccb0e099b.jpg?auto=compress,format&fit=crop&h=314&w=570&s=30335200bd34b1dc4e6aebd059cd1f78",
+            "https://hb.imgix.net/06bd4991ca6f940dc74c7acca3c9b6f4966014a1.jpg?auto=compress,format&fit=crop&h=314&w=570&s=33570a49549afa41eb243018297de5f8",
+            "https://hb.imgix.net/91a5930974a90990b70ab77b57a9212deafbbaba.jpg?auto=compress,format&fit=crop&h=314&w=570&s=8af86d05afed59298edb172772913f36",
+            "https://hb.imgix.net/d8ea5c1f8698cbaa1e13b1d003faa2e5a3d1cfec.jpg?auto=compress,format&fit=crop&h=314&w=570&s=ce07abbce40ffb019d0606f5c57648fa",
+            "https://hb.imgix.net/90cc78ce17c0934748d028e064971cace67d6d65.jpg?auto=compress,format&fit=crop&h=314&w=570&s=4b05199a3fde1ad2a8ce7510c075f37d",
+            "https://hb.imgix.net/f705ecc8c38ffbaee89456a55b591d4ed56e6c28.jpg?auto=compress,format&fit=crop&h=314&w=570&s=c2152da61348f9b28df33aad97c05f50",
+            "https://hb.imgix.net/ae7be49b47c0c642ca82cdd3cfc32af3c55bd65b.jpg?auto=compress,format&fit=crop&h=314&w=570&s=5a6a283b4cea95e949f8c999bb3beea4",
+            "https://hb.imgix.net/e6baf5892646915d8b04deb4880b8da66c38cb8c.jpg?auto=compress,format&fit=crop&h=314&w=570&s=52bb93b534bcb773f4696ed96ea6bb4d"
+          ]
+        }
+      },
+      "machine_name": "divinoids",
+      "url": "https://twitter.com/divinoids",
+      "downloads": [
+        {
+          "desktop_app_only": false,
+          "machine_name": "divinoids_windows",
+          "download_struct": [
+            {
+              "uploaded_at": "2022-03-05T02:28:01.705076",
+              "name": "Download",
+              "url": {
+                "web": "https://cdn.humble.com/humblebundle/Divinoids_new.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=726d99c2dcc89426b79c90e9b4b403026d90b293e1ae9bf49851f367b98a9c15",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/Divinoids_new.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=b9af18b88ea70f017d7cef60af12f530515a12e355e6777256ea3b10fd14703e"
+              },
+              "timestamp": 1646447329,
+              "builds": [
+                {
+                  "signature_file": "divinoids_windows_2.sig",
+                  "filename": "Divinoids_new.zip",
+                  "download_file_size": 82434344,
+                  "build_version": 2,
+                  "installed_file_size": 255303603,
+                  "executable_path": "Divinoids/Divinoids.exe"
+                }
+              ],
+              "build_version": 2,
+              "human_size": "78.6 MB",
+              "file_size": 82434344,
+              "small": 0,
+              "md5": "b22a909b812a3cb3119993e8d6bb3b32"
+            }
+          ],
+          "options_dict": {},
+          "download_identifier": null,
+          "platform": "windows",
+          "download_version_number": null
+        }
+      ],
+      "library_family_name": "",
+      "payee": {
+        "human_name": "Humble Games",
+        "machine_name": "humblepublishing"
+      },
+      "human_name": "Divinoids",
+      "custom_download_page_box_css": "",
+      "custom_download_page_box_html": "",
+      "icon": "https://hb.imgix.net/e3c79358c4a4bdd3d390e45ae76c2f6cf4eae779.png?auto=compress,format&s=dd7bb40b48cde9daedc927031832fa20"
+    },
+    {
+      "display_item": {
+        "publishers": [
+          {
+            "publisher-name": "Flazm"
+          }
+        ],
+        "description-text": "<html>\n <head>\n </head>\n <body>\n  <i>Train Valley 2</i> is a train tycoon puzzle game. Take your railroad company from the days of the Industrial Revolution and into the future, meeting the needs of the valley's cities and industries. Build railroads, upgrade your locomotives, and keep your trains on schedule without delays or accidents. All aboard — the train is leaving the station!\n  <br/>\n  <br/>\n  <img height=\"60\" src=\"https://hb.imgix.net/ae89b6663e9ccc9f97f9e2613cd33b1f43f7e6af.png?auto=compress,format&s=36de241103d736c2dbf7ae7b03514588\" width=\"351\"/>\n  <br/>\n  Enjoy engaging and addictive gameplay, combining puzzle micromanagement with tycoon elements.\n  <br/>\n  <br/>\n  <img height=\"68\" src=\"https://hb.imgix.net/818a0da7b780abbd56e33bc57664f3a22a434abd.png?auto=compress,format&s=37eff8bdf7c1d20bc2e04e6f6d873357\" width=\"351\"/>\n  <br/>\n  Discover the history of railroads in elegant low-poly graphics!\n  <br/>\n  <br/>\n  <img height=\"68\" src=\"https://hb.imgix.net/351368f011cfbe3b176062949404fcfe437998f0.png?auto=compress,format&s=da73c4a412165f3508988ec4e840891a\" width=\"351\"/>\n  <br/>\n  Keep your trains running on schedule across 50 levels in Company Mode.\n  <br/>\n  <br/>\n  <img height=\"68\" src=\"https://hb.imgix.net/3819503d7557ef9f1724c9e950cdf82a17b98d1e.png?auto=compress,format&s=264bb48f525fcbd96cdf249b89314c75\" width=\"351\"/>\n  <br/>\n  Upgrade your stock of locomotives and acquire advanced engines, with 18 models to unlock.\n  <br/>\n  <br/>\n  <img height=\"68\" src=\"https://hb.imgix.net/0cc452d1796fb71b5d85858703d7d2839964061a.png?auto=compress,format&s=7e513e8085e9750d91524c1c9989325a\" width=\"351\"/>\n  <br/>\n  Produce and ship increasingly sophisticated goods in more than 45 types of train cars.\n  <br/>\n  <br/>\n  <img height=\"68\" src=\"https://hb.imgix.net/31eb39818fd587dddffbeaa9a332d44ca70bd69c.png?auto=compress,format&s=c5a3b08f04bd2f5764aeffae3c7214a0\" width=\"351\"/>\n  <br/>\n  Jump into our Level Editor with Steam Workshop integration and create your own Valleys - or play levels from other players!\n  <br/>\n  <br/>\n  <img height=\"68\" src=\"https://hb.imgix.net/0d8b5e18a93ad973fcccbd00b3252f5864c8ba69.png?auto=compress,format&s=ee8fbabf6cf14ecafa1ecafdd4c9a1d5\" width=\"351\"/>\n  <br/>\n  Create your own mods with custom locomotives, train cars, industries, and resources from your favorite time or universe.\n </body>\n</html>",
+        "developers": [
+          {
+            "developer-name": "Alexey Davydov"
+          },
+          {
+            "developer-name": "Sergey Dvoynikov"
+          },
+          {
+            "developer-name": "Timofey Shargorodskiy"
+          }
+        ],
+        "image": "https://hb.imgix.net/d7ccba31d8566aa856703097ebd6a44f3adf46b1.jpeg?auto=compress,format&fit=crop&h=353&w=616&s=99d325a883ebe116570c997491eb3068",
+        "carousel-content": {
+          "youtube-link": [
+            "L7ZFAcuI_KE"
+          ],
+          "thumbnail": [
+            "https://hb.imgix.net/eb63fb4b11ae3bd54cc903906e45763554a80e9b.jpeg?auto=compress,format&fit=crop&h=59&w=105&s=cdf1c5ae24112045bfb0c3a28cb1b629",
+            "https://hb.imgix.net/3a6f7e18bf6f1f6d01986e812a391de99ce05e85.jpeg?auto=compress,format&fit=crop&h=59&w=105&s=d8314d88ca5acd6b84105bd5f5317a45",
+            "https://hb.imgix.net/a3836f31859c824e87db8bc319c63c826e49ccc7.jpeg?auto=compress,format&fit=crop&h=59&w=105&s=cd114c08ba4e01112fa3f0c8021e6450",
+            "https://hb.imgix.net/ecd7912acfa479f210a85ff788498b43dde0f92f.jpeg?auto=compress,format&fit=crop&h=59&w=105&s=9779e47c068127d62604ae240242ab98",
+            "https://hb.imgix.net/a6c3005e6ede9ea5e8fb357b72a68a342bbfb87e.jpeg?auto=compress,format&fit=crop&h=59&w=105&s=1b5d381f37aa3d44205ee3854d5a3066",
+            "https://hb.imgix.net/18f70d4b34569673d55e4300e81e85f1249560bb.jpeg?auto=compress,format&fit=crop&h=59&w=105&s=bbe3b8825a729fa354ff9a43c7025511",
+            "https://hb.imgix.net/7a4fb2430fbcf7f8f49d8657ec8414d954e535d2.jpeg?auto=compress,format&fit=crop&h=59&w=105&s=5a569168f4236a6888f5e28b1ca244ed",
+            "https://hb.imgix.net/a8096532a6c5bf03cc1a76ab82c45173a1f82fa4.jpeg?auto=compress,format&fit=crop&h=59&w=105&s=b27a6eb8048e8bd3f4ef801a4283be40"
+          ],
+          "screenshot": [
+            "https://hb.imgix.net/eb63fb4b11ae3bd54cc903906e45763554a80e9b.jpeg?auto=compress,format&fit=crop&h=314&w=570&s=35b0b6876ba3da0b89272f022f61cd86",
+            "https://hb.imgix.net/3a6f7e18bf6f1f6d01986e812a391de99ce05e85.jpeg?auto=compress,format&fit=crop&h=314&w=570&s=18c09448a8d31939a35d74937ea764e6",
+            "https://hb.imgix.net/a3836f31859c824e87db8bc319c63c826e49ccc7.jpeg?auto=compress,format&fit=crop&h=314&w=570&s=7cb7c4d5748875193a7a71a57c077aa4",
+            "https://hb.imgix.net/ecd7912acfa479f210a85ff788498b43dde0f92f.jpeg?auto=compress,format&fit=crop&h=314&w=570&s=525f64844b4e861ceac426db9c35269a",
+            "https://hb.imgix.net/a6c3005e6ede9ea5e8fb357b72a68a342bbfb87e.jpeg?auto=compress,format&fit=crop&h=314&w=570&s=d3afc58c0b0e277d2e914261f9fc2e3c",
+            "https://hb.imgix.net/18f70d4b34569673d55e4300e81e85f1249560bb.jpeg?auto=compress,format&fit=crop&h=314&w=570&s=67f370cb78301ef0463201c96d237c32",
+            "https://hb.imgix.net/7a4fb2430fbcf7f8f49d8657ec8414d954e535d2.jpeg?auto=compress,format&fit=crop&h=314&w=570&s=3ebb9f5ce27d44f7abe8e9d21f96c386",
+            "https://hb.imgix.net/a8096532a6c5bf03cc1a76ab82c45173a1f82fa4.jpeg?auto=compress,format&fit=crop&h=314&w=570&s=bdc4fcd740d9f298c44b4986c1757c4f"
+          ]
+        }
+      },
+      "machine_name": "trainvalley2_drm_freebuild_ObHto",
+      "url": "",
+      "downloads": [
+        {
+          "desktop_app_only": false,
+          "machine_name": "trainvalley2_drm_freebuild_obhto_windows_OXddB",
+          "download_struct": [
+            {
+              "uploaded_at": "2020-02-26T21:55:22.482240",
+              "name": "64-bit",
+              "url": {
+                "web": "https://cdn.humble.com/humblebundle/flazm_lrl96/train-valley-2-humble-win64.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=2e5d7a7b0ee834bacdfce3fdbf7895b343e14595e010a129dd21ea19751c4d8f",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/flazm_lrl96/train-valley-2-humble-win64.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=8007b34fb85211b04e504ff41fcad32223e98882283239168a83d991ae4b465b"
+              },
+              "timestamp": 1582754254,
+              "small": 0,
+              "human_size": "279.1 MB",
+              "file_size": 292695412,
+              "build_version": "1",
+              "md5": "95bd9f09fa22794024193af327b6d3ea",
+              "builds": [
+                {
+                  "signature_file": "trainvalley2_drm_freebuild_obhto_windows_OXddB_1.sig",
+                  "filename": "flazm_lrl96/train-valley-2-humble-win64.zip",
+                  "download_file_size": "292695412",
+                  "build_version": "1",
+                  "installed_file_size": "791399142",
+                  "executable_path": "TrainValley2.exe"
+                }
+              ]
+            },
+            {
+              "uploaded_at": "2020-02-26T21:58:04.710284",
+              "name": "32-bit",
+              "url": {
+                "web": "https://cdn.humble.com/humblebundle/flazm_lrl96/train-valley-2-humble-win32.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=8c7799013ee9830cc8294bd4e9e3b62d46cffd59a08d790b0b0e3c49651aff11",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/flazm_lrl96/train-valley-2-humble-win32.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=b814cc1c29d5dee5e72996f01b4f8fa70c008a760b5355e68dd68e6667cc616b"
+              },
+              "timestamp": 1582754392,
+              "human_size": "274.1 MB",
+              "file_size": 287425638,
+              "small": 0,
+              "md5": "8a0aaedd9261e158a2bb8cbee9f2c904"
+            }
+          ],
+          "options_dict": {},
+          "download_identifier": null,
+          "platform": "windows",
+          "download_version_number": null
+        },
+        {
+          "desktop_app_only": false,
+          "machine_name": "trainvalley2_drm_freebuild_obhto_mac_8CRPt",
+          "download_struct": [
+            {
+              "uploaded_at": "2020-02-26T22:00:48.136142",
+              "name": "Download",
+              "url": {
+                "web": "https://cdn.humble.com/humblebundle/flazm_lrl96/train-valley-2-humble-mac.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=0e15b709ebfd084c61f82c22a8695da4bc58bd54e84bd637833ea690834d5140",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/flazm_lrl96/train-valley-2-humble-mac.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=c71aa4f50adb8b918c0c3f488abc79e60d69e869ec17e6817e4b5f4e9870bff0"
+              },
+              "timestamp": 1582754560,
+              "human_size": "291.9 MB",
+              "file_size": 306096352,
+              "small": 0,
+              "md5": "befcc127cd9227d8be0d238f2299d8c7"
+            }
+          ],
+          "options_dict": {},
+          "download_identifier": null,
+          "platform": "mac",
+          "download_version_number": null
+        },
+        {
+          "desktop_app_only": false,
+          "machine_name": "trainvalley2_drm_freebuild_obhto_linux_yxl1q",
+          "download_struct": [
+            {
+              "uploaded_at": "2020-02-26T22:15:16.680469",
+              "name": "Download",
+              "url": {
+                "web": "https://cdn.humble.com/humblebundle/flazm_lrl96/train-valley-2-humble-linux.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=9682e2f617265a57b878d9c5ddd1fdceb07bce459ed3ea56b17f750bf4dc9837",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/flazm_lrl96/train-valley-2-humble-linux.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=78daa95ac53176b0ac73fd3a34799641747d8a5c2d50be55a6f9f39644c725b2"
+              },
+              "timestamp": 1582755465,
+              "human_size": "330.7 MB",
+              "file_size": 346812678,
+              "small": 0,
+              "md5": "67d086d51935c4ad6b937f1f3735681b"
+            }
+          ],
+          "options_dict": {},
+          "download_identifier": null,
+          "platform": "linux",
+          "download_version_number": null
+        }
+      ],
+      "library_family_name": null,
+      "payee": {
+        "human_name": "Flazm",
+        "machine_name": "flazm_lrl96"
+      },
+      "human_name": "Train Valley 2 - DRM-free build",
+      "custom_download_page_box_css": null,
+      "custom_download_page_box_html": "",
+      "icon": "https://hb.imgix.net/b42a137c61962c22c63cd3f773327628b824e207.png?auto=compress,format&s=0200f70b99cebb37ffee769b02c41a7b"
+    },
+    {
+      "machine_name": "ringofpain_exclusivedemo",
+      "url": "",
+      "downloads": [
+        {
+          "desktop_app_only": false,
+          "machine_name": "ringofpain_exclusivedemo",
+          "download_struct": [
+            {
+              "uploaded_at": "2020-04-17T15:31:36.640816",
+              "name": "Download",
+              "url": {
+                "web": "https://cdn.humble.com/humblebundle/PC-RingOfPain-0.8.21-DEMO-HC.zip?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=8e60e3ee0ddfbe6f821b9db0448e7892c98dfcd6ec432d007ef2872bd971c32e",
+                "bittorrent": "https://cdn.humble.com/humblebundle/torrents/PC-RingOfPain-0.8.21-DEMO-HC.zip.torrent?gamekey=rXxyntxcp3mWKN2p&t=st=1777635828~exp=1777722228~hmac=9c67c2f90e45c52757e7874fcf1b1e9443a049817fd2405ecd3ee02572e65fcc"
+              },
+              "timestamp": 1587137635,
+              "human_size": "309.6 MB",
+              "file_size": 324627743,
+              "small": 0,
+              "md5": "c531fe8f11c735ce615620c2dab9b9ce"
+            }
+          ],
+          "options_dict": {},
+          "download_identifier": "",
+          "platform": "windows",
+          "download_version_number": null
+        }
+      ],
+      "library_family_name": "",
+      "payee": {
+        "human_name": "Humble Games",
+        "machine_name": "humblepublishing"
+      },
+      "human_name": "Ring of Pain Exclusive Sneak Peek",
+      "custom_download_page_box_css": "",
+      "custom_download_page_box_html": "",
+      "icon": "https://hb.imgix.net/3e06d2e287aafda0615ab4fb85dfba479db06b7c.png?auto=compress,format&s=45f5bd31507b232c31fd31a6204458d3"
+    }
+  ],
+  "total_choices": 10,
+  "tpkd_dict": {
+    "all_tpks": [
+      {
+        "machine_name": "trainvalley2_choice_steam",
+        "gamekey": "rXxyntxcp3mWKN2p",
+        "exclusive_countries": [],
+        "num_days_until_expired": -1,
+        "disallowed_countries": [],
+        "show_custom_instructions_in_user_libraries": false,
+        "key_type": "steam",
+        "visible": true,
+        "sold_out": false,
+        "instructions_html": "<a href='https://support.humblebundle.com/hc/articles/204008710-How-To-Redeem-Steam-Keys' target='_blank'>Steam Instructions</a>",
+        "display_separately": false,
+        "direct_redeem": false,
+        "key_type_human_name": "Steam",
+        "steam_app_id": 602320,
+        "human_name": "Train Valley 2",
+        "preinstruction_text": "Copy this key into the Steam client, or click Redeem to redeem in-browser.",
+        "auto_expand": true,
+        "is_expired": false,
+        "class": "steambutton",
+        "keyindex": 0,
+        "disclaimer": "Steam will not provide extra giftable copies of games you already own."
+      }
+    ]
+  },
+  "choices_remaining": 10,
+  "currency": "USD",
+  "is_giftee": false,
+  "claimed": true,
+  "total": 11.666666666666666,
+  "path_ids": [
+    "4936629744631808",
+    "5901057428357120"
+  ]
+}

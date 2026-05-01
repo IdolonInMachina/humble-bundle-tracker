@@ -1,0 +1,58 @@
+{
+  "amount_spent": 0,
+  "product": {
+    "category": "storefront",
+    "machine_name": "amnesiacollection_storefront",
+    "empty_tpkds": {},
+    "post_purchase_text": "",
+    "human_name": "Amnesia Collection",
+    "partial_gift_enabled": false
+  },
+  "gamekey": "TsySbzZ2Rq4t3SPK",
+  "uid": "X4FF2XNP868PW",
+  "created": "2018-01-26T07:24:31.329510",
+  "missed_credit": null,
+  "subproducts": [
+    {
+      "machine_name": "staxel_crosspromo",
+      "url": "",
+      "downloads": [],
+      "library_family_name": "hidden",
+      "payee": {
+        "human_name": "Humble Bundle",
+        "machine_name": "humblebundle"
+      },
+      "human_name": "Staxel Cross Promo",
+      "custom_download_page_box_css": null,
+      "custom_download_page_box_html": "<div style='text-align:center; font-size: 16px;'>\r\n    <a href=\"https://www.humblebundle.com/store/staxel?hmb_campaign=free_amnesiacollection_2018&hmb_source=download_page&hmb_medium=banner\" target=\"_blank\">Staxel</a> has now launched into early access!  Check out its launch trailer below:<br><br>\r\n    <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/yvIcdFCnusI?rel=0&amp;showinfo=0\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>\r\n</div>",
+      "icon": null
+    },
+    {
+      "machine_name": "amnesiacollection_freegame_info",
+      "url": "",
+      "downloads": [],
+      "library_family_name": "hidden",
+      "payee": {
+        "human_name": "Humble Bundle",
+        "machine_name": "humblebundle"
+      },
+      "human_name": "Amnesia Collection Free Game Redemption Deadline",
+      "custom_download_page_box_css": null,
+      "custom_download_page_box_html": "<div style=\"text-align: center; color: #F00; margin: 0 0 1em;\">\r\n    <p>\r\n  The redemption deadline is <strong class='merch-deadline'>February 10th, 2018 at 10:00 AM Pacific</strong>.\r\n  You have <strong><span class='merch-countdown'>0</span></strong> days left!\r\n  </p>\r\n  <p>Immediately after 10AM Pacific on February 10th, the Steam key will magically vanish as if it were just a figment of your imagination, leaving this cryptic message behind in its wake.\r\n</p>\r\n</div>\r\n\r\n",
+      "icon": null
+    }
+  ],
+  "total_choices": 0,
+  "tpkd_dict": {
+    "all_tpks": []
+  },
+  "choices_remaining": 0,
+  "currency": "USD",
+  "is_giftee": false,
+  "claimed": true,
+  "total": 0,
+  "path_ids": [
+    "4555371303272448",
+    "5629499534213120"
+  ]
+}
