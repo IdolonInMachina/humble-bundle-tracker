@@ -96,8 +96,11 @@ function extractKeys(value: unknown): string[] {
 
 const orderKeys = extractKeys(orders);
 const subKeys = extractKeys(subs);
-const allKeys = Array.from(new Set([...orderKeys, ...subKeys]));
-console.log(`considering ${orderKeys.length} order + ${subKeys.length} sub keys (${allKeys.length} unique)`);
+// Prioritize subs first — those are the most-recent Humble Choice months,
+// which guarantees we capture current-shape data. The orders list comes
+// after to backfill diverse types (bundles, storefront, older Choice).
+const allKeys = Array.from(new Set([...subKeys, ...orderKeys]));
+console.log(`considering ${subKeys.length} sub + ${orderKeys.length} order keys (${allKeys.length} unique, subs first)`);
 
 if (allKeys.length === 0) {
   console.error("no gamekeys found, aborting");
@@ -114,7 +117,10 @@ if (!winningUrlTemplate) {
 }
 console.log(`\nWinning endpoint template: ${winningUrlTemplate}\n`);
 
-const TARGET_FIXTURES = 3;
+// Capture more fixtures than we strictly need so the parser sees recent
+// shapes (2025/2026 Choice months) alongside older ones, plus bundle/store
+// variety. Six gives us subs + a diverse orders sample.
+const TARGET_FIXTURES = 6;
 let captured = 0;
 let skipped = 0;
 for (const key of allKeys) {
@@ -125,11 +131,13 @@ for (const key of allKeys) {
     skipped++;
     continue;
   }
+  const detailObj = detail as { product?: { human_name?: string; category?: string } };
+  const label = detailObj.product?.human_name ?? "(unknown)";
   await writeFile(
     `tests/fetcher/fixtures/order-${key}.json`,
     JSON.stringify(sanitize(detail), null, 2)
   );
-  console.log(`captured detail for order ${key}`);
+  console.log(`captured ${key} — ${label} [${detailObj.product?.category ?? "?"}]`);
   captured++;
 }
 console.log(`done: ${captured} order details captured, ${skipped} skipped (404)`);
