@@ -28,5 +28,10 @@ export const setCookie = (v: string) => setSetting(KEYS.cookie, v);
 
 export async function getSyncIntervalHours(): Promise<number> {
   const v = await getSetting(KEYS.intervalHours);
-  return v ? Number(v) : 6;
+  if (v === null) return 6;
+  const n = Number(v);
+  return Number.isFinite(n) && n > 0 ? n : 6;
 }
+
+export const setSyncIntervalHours = (n: number) =>
+  setSetting(KEYS.intervalHours, String(n));

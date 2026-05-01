@@ -684,8 +684,13 @@ export const setCookie = (v: string) => setSetting(KEYS.cookie, v);
 
 export async function getSyncIntervalHours(): Promise<number> {
   const v = await getSetting(KEYS.intervalHours);
-  return v ? Number(v) : 6;
+  if (v === null) return 6;
+  const n = Number(v);
+  return Number.isFinite(n) && n > 0 ? n : 6;
 }
+
+export const setSyncIntervalHours = (n: number) =>
+  setSetting(KEYS.intervalHours, String(n));
 ```
 
 - [ ] **Step 4: Implement route**
@@ -694,7 +699,12 @@ export async function getSyncIntervalHours(): Promise<number> {
 
 ```ts
 import { Hono } from "hono";
-import { getCookie, setCookie, getSyncIntervalHours, setSetting } from "../db/settings.ts";
+import {
+  getCookie,
+  setCookie,
+  getSyncIntervalHours,
+  setSyncIntervalHours,
+} from "../db/settings.ts";
 
 export const settingsRoutes = new Hono()
   .get("/", async (c) => {
@@ -717,9 +727,11 @@ export const settingsRoutes = new Hono()
   })
   .put("/", async (c) => {
     const body = (await c.req.json()) as { syncIntervalHours?: unknown };
-    if (typeof body.syncIntervalHours === "number" && body.syncIntervalHours > 0) {
-      await setSetting("sync_interval_hours", String(body.syncIntervalHours));
+    const v = body.syncIntervalHours;
+    if (typeof v !== "number" || !Number.isFinite(v) || v <= 0) {
+      return c.json({ error: "syncIntervalHours must be a positive number" }, 400);
     }
+    await setSyncIntervalHours(v);
     return c.body(null, 204);
   });
 ```
