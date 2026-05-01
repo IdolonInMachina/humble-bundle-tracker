@@ -35,7 +35,9 @@ export type AppType = typeof app;
 
 if (import.meta.main) {
   const port = Number(process.env.PORT ?? 5173);
-  Bun.serve({ port, fetch: app.fetch });
+  // Default Bun idle timeout (10s) hangs up long syncs that take 20-30s+
+  // against Humble's API. 60s is generous but safe.
+  Bun.serve({ port, fetch: app.fetch, idleTimeout: 60 });
   console.log(`server listening on http://localhost:${port}`);
   maybeKickStaleSync(runner).catch((e) => console.error("startup sync failed", e));
 }
