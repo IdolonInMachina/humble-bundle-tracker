@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Builds
+dist/
+build/
+.vite/
+
+# SQLite (the local DB lives here, never commit it)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Local env (keep .env.example)
+.env
+.env.*
+!.env.example
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage / test output
+coverage/
+.bun/
