@@ -3,6 +3,7 @@ import { serveStatic } from "hono/bun";
 import { health } from "./routes/health.ts";
 import { settingsRoutes } from "./routes/settings.ts";
 import { itemsRoutes } from "./routes/items.ts";
+import { bundlesRoutes } from "./routes/bundles.ts";
 import { syncRoutes } from "./routes/sync.ts";
 import { makeFetcher } from "./fetcher/factory.ts";
 import { initSharedRunner } from "./sync/runner.ts";
@@ -14,6 +15,7 @@ const api = new Hono()
   .route("/health", health)
   .route("/settings", settingsRoutes)
   .route("/items", itemsRoutes)
+  .route("/bundles", bundlesRoutes)
   .route("/sync", syncRoutes(runner));
 
 export const app = new Hono()
