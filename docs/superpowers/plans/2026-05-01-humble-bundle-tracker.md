@@ -1266,7 +1266,7 @@ Expected: FAIL — `upsert.ts` missing.
 `server/fetcher/upsert.ts`:
 
 ```ts
-import { sql } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { db } from "../db/client.ts";
 import { bundles, items } from "../db/schema.ts";
 import type { ParseResult } from "./parse.ts";
@@ -1299,7 +1299,16 @@ export async function upsertParsed(results: ParseResult[]): Promise<UpsertCounts
       });
 
     for (const it of parsedItems) {
-      const result = await db
+      // Detect insert vs update by checking existence first. We can't rely on
+      // a CASE-on-createdAt trick because `now` may equal the prior row's
+      // createdAt when two upserts run in the same millisecond.
+      const existing = await db
+        .select({ id: items.id })
+        .from(items)
+        .where(eq(items.id, it.id))
+        .get();
+
+      await db
         .insert(items)
         .values({ ...it, createdAt: now, updatedAt: now })
         .onConflictDoUpdate({
@@ -1315,12 +1324,10 @@ export async function upsertParsed(results: ParseResult[]): Promise<UpsertCounts
             expiresAt: it.expiresAt,
             updatedAt: now,
           },
-        })
-        .returning({ created: sql<number>`CASE WHEN ${items.createdAt} = ${now} THEN 1 ELSE 0 END` })
-        .get();
+        });
 
-      if (result?.created) added++;
-      else updated++;
+      if (existing) updated++;
+      else added++;
     }
   }
 
@@ -1352,7 +1359,7 @@ const CONCURRENCY = 5;
 async function pmap<T, R>(
   items: T[],
   limit: number,
-  fn: (item: T, i: number) => Promise<R>
+  fn: (item: T, i: number) => Promise<R>,
 ): Promise<R[]> {
   const results: R[] = new Array(items.length);
   let i = 0;
@@ -1365,6 +1372,25 @@ async function pmap<T, R>(
   });
   await Promise.all(workers);
   return results;
+}
+
+// Humble's subscriptions endpoint returns { cursor, products: [...] } rather
+// than a bare array, so we extract gamekeys defensively across both shapes.
+function extractGamekeys(value: unknown): string[] {
+  if (Array.isArray(value)) {
+    return value
+      .map((o) =>
+        typeof o === "object" && o !== null ? (o as { gamekey?: unknown }).gamekey : null,
+      )
+      .filter((k): k is string => typeof k === "string");
+  }
+  if (typeof value === "object" && value !== null) {
+    const obj = value as { products?: unknown; gamekeys?: unknown };
+    if (Array.isArray(obj.products)) return extractGamekeys(obj.products);
+    if (Array.isArray(obj.gamekeys))
+      return obj.gamekeys.filter((k): k is string => typeof k === "string");
+  }
+  return [];
 }
 
 export class CookieFetcher implements Fetcher {
@@ -1388,23 +1414,25 @@ export class CookieFetcher implements Fetcher {
       return res.json();
     };
 
-    // 1. health check
-    await fetchJson("/api/v1/user/order");
+    // List all order gamekeys (also serves as the cookie health check —
+    // 401/non-JSON throws CookieExpiredError).
+    const orders = await fetchJson("/api/v1/user/order");
+    // Plus monthly subscription products.
+    const subs = await fetchJson(
+      "/api/v1/subscriptions/humble_monthly/subscription_products_with_gamekeys",
+    );
+    const allKeys = Array.from(
+      new Set([...extractGamekeys(orders), ...extractGamekeys(subs)]),
+    );
 
-    // 2. + 3. list all gamekeys
-    const orders = (await fetchJson("/api/v1/user/order")) as Array<{ gamekey: string }>;
-    const subs = (await fetchJson(
-      "/api/v1/subscriptions/humble_monthly/subscription_products_with_gamekeys"
-    )) as Array<{ gamekey: string }>;
-
-    const allKeys = Array.from(new Set([...orders, ...subs].map((o) => o.gamekey)));
-
-    // 4. fetch + parse each, tolerating per-order failures
+    // 4. fetch + parse each, tolerating per-order failures.
+    // The order-detail endpoint is singular `/order/`, not plural — the plural
+    // form 404s for every key.
     let partial = false;
     const errors: string[] = [];
     const parsed = await pmap(allKeys, CONCURRENCY, async (key) => {
       try {
-        const detail = await fetchJson(`/api/v1/orders/${key}?all_tpkds=true`);
+        const detail = await fetchJson(`/api/v1/order/${key}?all_tpkds=true`);
         return parseOrder(detail as Parameters<typeof parseOrder>[0]);
       } catch (e) {
         partial = true;
@@ -1416,16 +1444,35 @@ export class CookieFetcher implements Fetcher {
     const valid = parsed.filter((p): p is NonNullable<typeof p> => p !== null);
     const counts = await upsertParsed(valid);
 
+    // Distinguish total-failure from partial-success: if every key errored
+    // we want "error", not "partial".
+    let status: SyncReport["status"];
+    if (allKeys.length === 0) {
+      status = "ok"; // nothing to fetch is success, not error
+    } else if (errors.length === allKeys.length) {
+      status = "error"; // every order failed
+    } else if (partial) {
+      status = "partial"; // some succeeded, some failed
+    } else {
+      status = "ok"; // all succeeded
+    }
+
     return {
       startedAt,
       finishedAt: Date.now(),
-      status: partial ? "partial" : "ok",
+      status,
       bundlesSeen: counts.bundlesSeen,
       itemsAdded: counts.itemsAdded,
       itemsUpdated: counts.itemsUpdated,
-      error: errors.length ? errors.join("; ") : null,
+      error: errors.length ? formatErrors(errors) : null,
     };
   }
+}
+
+function formatErrors(errors: string[]): string {
+  const MAX = 20;
+  if (errors.length <= MAX) return errors.join("; ");
+  return `${errors.slice(0, MAX).join("; ")}; ...and ${errors.length - MAX} more`;
 }
 ```
 

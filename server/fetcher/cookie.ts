@@ -65,11 +65,10 @@ export class CookieFetcher implements Fetcher {
       return res.json();
     };
 
-    // 1. health check
-    await fetchJson("/api/v1/user/order");
-
-    // 2. + 3. list all gamekeys (orders + monthly subscription products)
+    // List all order gamekeys (also serves as the cookie health check —
+    // 401/non-JSON throws CookieExpiredError).
     const orders = await fetchJson("/api/v1/user/order");
+    // Plus monthly subscription products.
     const subs = await fetchJson(
       "/api/v1/subscriptions/humble_monthly/subscription_products_with_gamekeys",
     );
@@ -116,7 +115,13 @@ export class CookieFetcher implements Fetcher {
       bundlesSeen: counts.bundlesSeen,
       itemsAdded: counts.itemsAdded,
       itemsUpdated: counts.itemsUpdated,
-      error: errors.length ? errors.join("; ") : null,
+      error: errors.length ? formatErrors(errors) : null,
     };
   }
+}
+
+function formatErrors(errors: string[]): string {
+  const MAX = 20;
+  if (errors.length <= MAX) return errors.join("; ");
+  return `${errors.slice(0, MAX).join("; ")}; ...and ${errors.length - MAX} more`;
 }
