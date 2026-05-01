@@ -4,6 +4,8 @@ import { Route as LibraryRoute } from "./routes/Library";
 import { Route as SettingsRoute } from "./routes/Settings";
 import { Route as BundlesRoute } from "./routes/Bundles";
 import { Route as BundleDetailRoute } from "./routes/BundleDetail";
+import { Route as ExpiringRoute } from "./routes/Expiring";
+import { Route as UnclaimedRoute } from "./routes/Unclaimed";
 
 const indexRedirect = createRoute({
   getParentRoute: () => RootRoute,
@@ -18,6 +20,8 @@ const routeTree = RootRoute.addChildren([
   SettingsRoute,
   BundlesRoute,
   BundleDetailRoute,
+  ExpiringRoute,
+  UnclaimedRoute,
   indexRedirect,
 ]);
 
