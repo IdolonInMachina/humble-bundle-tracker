@@ -1,7 +1,21 @@
 import { Hono } from "hono";
+import { serveStatic } from "hono/bun";
 import { health } from "./routes/health.ts";
 
-export const app = new Hono().basePath("/api").route("/health", health);
+const api = new Hono().route("/health", health);
+
+export const app = new Hono()
+  .route("/api", api)
+  .use(
+    "/*",
+    serveStatic({
+      root: "./web/dist",
+      onNotFound: (path) => {
+        if (path.startsWith("/api")) return;
+      },
+    })
+  )
+  .get("/*", serveStatic({ path: "./web/dist/index.html" }));
 
 export type AppType = typeof app;
 
