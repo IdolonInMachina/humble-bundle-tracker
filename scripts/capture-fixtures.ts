@@ -25,11 +25,12 @@ async function tryGet(url: string): Promise<unknown | null> {
 }
 
 async function probeEndpointVariants(key: string): Promise<string | null> {
+  // Order matters: prefer variants likely to include tpkd_dict (with key data).
   const candidates = [
-    `https://www.humblebundle.com/api/v1/orders/${key}?all_tpkds=true`,
-    `https://www.humblebundle.com/api/v1/orders/${key}`,
-    `https://www.humblebundle.com/api/v1/order/${key}`,
     `https://www.humblebundle.com/api/v1/order/${key}?all_tpkds=true`,
+    `https://www.humblebundle.com/api/v1/orders/${key}?all_tpkds=true`,
+    `https://www.humblebundle.com/api/v1/order/${key}`,
+    `https://www.humblebundle.com/api/v1/orders/${key}`,
     `https://www.humblebundle.com/order/${key}.json`,
     `https://www.humblebundle.com/api/v1/orders?gamekeys=${key}`,
     `https://www.humblebundle.com/api/v1/orders/?gamekeys=${key}&all_tpkds=true`,
