@@ -1714,7 +1714,15 @@ const api = new Hono()
 
 export const app = new Hono()
   .route("/api", api)
-  .use("/*", serveStatic({ root: "./web/dist" }))
+  .use(
+    "/*",
+    serveStatic({
+      root: "./web/dist",
+      onNotFound: (path) => {
+        if (path.startsWith("/api")) return;
+      },
+    })
+  )
   .get("/*", serveStatic({ path: "./web/dist/index.html" }));
 
 export type AppType = typeof app;
