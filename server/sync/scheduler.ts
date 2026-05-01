@@ -14,9 +14,11 @@ export async function maybeKickStaleSync(runner: SyncRunner): Promise<void> {
     .limit(1)
     .get();
   if (!last) {
-    runner.kick();
+    runner.kick().catch((e) => console.error("scheduled sync failed", e));
     return;
   }
   const intervalMs = (await getSyncIntervalHours()) * 60 * 60 * 1000;
-  if (Date.now() - last.startedAt > intervalMs) runner.kick();
+  if (Date.now() - last.startedAt > intervalMs) {
+    runner.kick().catch((e) => console.error("scheduled sync failed", e));
+  }
 }

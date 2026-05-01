@@ -22,6 +22,12 @@ class StubFetcher implements Fetcher {
   }
 }
 
+class FailingFetcher implements Fetcher {
+  async sync(): Promise<SyncReport> {
+    throw new Error("boom");
+  }
+}
+
 describe("SyncRunner", () => {
   beforeEach(() => sqlite.exec("DELETE FROM sync_runs"));
 
@@ -51,5 +57,16 @@ describe("SyncRunner", () => {
     const rows = await db.select().from(syncRuns).all();
     expect(rows.length).toBe(1);
     expect(rows[0]!.status).toBe("ok");
+  });
+
+  test("writes error row when fetcher throws", async () => {
+    const runner = new SyncRunner(new FailingFetcher());
+    await runner.kick();
+    await runner.waitForIdle();
+    const rows = await db.select().from(syncRuns).all();
+    expect(rows.length).toBe(1);
+    expect(rows[0]!.status).toBe("error");
+    expect(rows[0]!.error).toBe("boom");
+    expect(rows[0]!.finishedAt).not.toBeNull();
   });
 });

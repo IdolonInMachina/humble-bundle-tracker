@@ -1648,8 +1648,13 @@ export class SyncRunner {
 }
 
 let _shared: SyncRunner | null = null;
-export function getSharedRunner(fetcher: Fetcher): SyncRunner {
-  if (!_shared) _shared = new SyncRunner(fetcher);
+export function initSharedRunner(fetcher: Fetcher): SyncRunner {
+  if (_shared) throw new Error("shared runner already initialized");
+  _shared = new SyncRunner(fetcher);
+  return _shared;
+}
+export function getSharedRunner(): SyncRunner {
+  if (!_shared) throw new Error("shared runner not initialized; call initSharedRunner first");
   return _shared;
 }
 ```
@@ -1673,11 +1678,13 @@ export async function maybeKickStaleSync(runner: SyncRunner): Promise<void> {
     .limit(1)
     .get();
   if (!last) {
-    runner.kick();
+    runner.kick().catch((e) => console.error("scheduled sync failed", e));
     return;
   }
   const intervalMs = (await getSyncIntervalHours()) * 60 * 60 * 1000;
-  if (Date.now() - last.startedAt > intervalMs) runner.kick();
+  if (Date.now() - last.startedAt > intervalMs) {
+    runner.kick().catch((e) => console.error("scheduled sync failed", e));
+  }
 }
 ```
 
@@ -1780,10 +1787,10 @@ import { health } from "./routes/health.ts";
 import { settingsRoutes } from "./routes/settings.ts";
 import { syncRoutes } from "./routes/sync.ts";
 import { makeFetcher } from "./fetcher/factory.ts";
-import { getSharedRunner } from "./sync/runner.ts";
+import { initSharedRunner } from "./sync/runner.ts";
 import { maybeKickStaleSync } from "./sync/scheduler.ts";
 
-const runner = getSharedRunner(makeFetcher());
+const runner = initSharedRunner(makeFetcher());
 
 const api = new Hono()
   .route("/health", health)

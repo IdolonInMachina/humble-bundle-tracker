@@ -12,10 +12,9 @@ export class SyncRunner {
 
   kick(): Promise<{ runId: number }> {
     if (this.inFlight) return this.inFlight;
-    // Build the un-finally'd promise first, then attach the cleanup. We hand
-    // out `this.inFlight` (the post-finally promise) so identity is stable
-    // across concurrent kicks; assigning before `.finally` would let the
-    // cleanup callback fire before the assignment in some edge cases.
+    // Hand out the post-finally promise so callers see the same identity
+    // even if a second kick arrives while we're settling. The .finally
+    // callback clears inFlight as a microtask after the promise settles.
     const p = this.run();
     this.inFlight = p.finally(() => {
       this.inFlight = null;
@@ -72,7 +71,12 @@ export class SyncRunner {
 }
 
 let _shared: SyncRunner | null = null;
-export function getSharedRunner(fetcher: Fetcher): SyncRunner {
-  if (!_shared) _shared = new SyncRunner(fetcher);
+export function initSharedRunner(fetcher: Fetcher): SyncRunner {
+  if (_shared) throw new Error("shared runner already initialized");
+  _shared = new SyncRunner(fetcher);
+  return _shared;
+}
+export function getSharedRunner(): SyncRunner {
+  if (!_shared) throw new Error("shared runner not initialized; call initSharedRunner first");
   return _shared;
 }
