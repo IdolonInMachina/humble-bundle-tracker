@@ -57,9 +57,24 @@ await writeFile(
 // deleted orders, sub-only keys hitting the wrong endpoint, etc.). We want a
 // few diverse fixtures so the parser sees both Choice months and bundle/store
 // orders if present.
-const orderKeys = (orders as Array<{ gamekey: string }>).map((o) => o.gamekey);
-const subKeys = (subs as Array<{ gamekey: string }>).map((o) => o.gamekey);
-const allKeys = [...orderKeys, ...subKeys];
+function extractKeys(value: unknown): string[] {
+  if (Array.isArray(value)) {
+    return value
+      .map((o) => (typeof o === "object" && o !== null ? (o as { gamekey?: unknown }).gamekey : null))
+      .filter((k): k is string => typeof k === "string");
+  }
+  if (typeof value === "object" && value !== null) {
+    const obj = value as { products?: unknown; gamekeys?: unknown };
+    if (Array.isArray(obj.products)) return extractKeys(obj.products);
+    if (Array.isArray(obj.gamekeys)) return obj.gamekeys.filter((k): k is string => typeof k === "string");
+  }
+  return [];
+}
+
+const orderKeys = extractKeys(orders);
+const subKeys = extractKeys(subs);
+const allKeys = Array.from(new Set([...orderKeys, ...subKeys]));
+console.log(`considering ${orderKeys.length} order + ${subKeys.length} sub keys (${allKeys.length} unique)`);
 
 const TARGET_FIXTURES = 3;
 let captured = 0;
