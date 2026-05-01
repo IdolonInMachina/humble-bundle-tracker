@@ -24,6 +24,28 @@ async function tryGet(url: string): Promise<unknown | null> {
   return res.json();
 }
 
+async function probeEndpointVariants(key: string): Promise<string | null> {
+  const candidates = [
+    `https://www.humblebundle.com/api/v1/orders/${key}?all_tpkds=true`,
+    `https://www.humblebundle.com/api/v1/orders/${key}`,
+    `https://www.humblebundle.com/api/v1/order/${key}`,
+    `https://www.humblebundle.com/api/v1/order/${key}?all_tpkds=true`,
+    `https://www.humblebundle.com/order/${key}.json`,
+    `https://www.humblebundle.com/api/v1/orders?gamekeys=${key}`,
+    `https://www.humblebundle.com/api/v1/orders/?gamekeys=${key}&all_tpkds=true`,
+  ];
+  console.log(`\nProbing endpoint shapes for key ${key}:`);
+  let winner: string | null = null;
+  for (const url of candidates) {
+    const res = await fetch(url, { headers });
+    const ct = res.headers.get("content-type") ?? "";
+    const note = ct.includes("json") ? "json" : ct.split(";")[0] ?? "?";
+    console.log(`  ${res.status} ${note.padEnd(20)} ${url.replace(`/${key}`, "/<key>").replace(`gamekeys=${key}`, "gamekeys=<key>")}`);
+    if (res.ok && ct.includes("json") && winner === null) winner = url.replace(key, "{KEY}");
+  }
+  return winner;
+}
+
 function sanitize(data: unknown): unknown {
   return JSON.parse(
     JSON.stringify(data).replace(
@@ -76,14 +98,28 @@ const subKeys = extractKeys(subs);
 const allKeys = Array.from(new Set([...orderKeys, ...subKeys]));
 console.log(`considering ${orderKeys.length} order + ${subKeys.length} sub keys (${allKeys.length} unique)`);
 
+if (allKeys.length === 0) {
+  console.error("no gamekeys found, aborting");
+  process.exit(1);
+}
+
+// Probe endpoint variants on the first key to find the right shape.
+const probeKey = allKeys[0]!;
+const winningUrlTemplate = await probeEndpointVariants(probeKey);
+if (!winningUrlTemplate) {
+  console.error("\nNo endpoint variant returned 200 + JSON. Humble may have changed their API again.");
+  console.error("Open https://www.humblebundle.com/home/keys in your browser, open DevTools → Network → XHR, refresh, and look for the call that returns each order's contents. Paste the URL pattern back to the controller.");
+  process.exit(2);
+}
+console.log(`\nWinning endpoint template: ${winningUrlTemplate}\n`);
+
 const TARGET_FIXTURES = 3;
 let captured = 0;
 let skipped = 0;
 for (const key of allKeys) {
   if (captured >= TARGET_FIXTURES) break;
-  const detail = await tryGet(
-    `https://www.humblebundle.com/api/v1/orders/${key}?all_tpkds=true`
-  );
+  const url = winningUrlTemplate.replace("{KEY}", key);
+  const detail = await tryGet(url);
   if (detail === null) {
     skipped++;
     continue;
