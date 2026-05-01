@@ -64,7 +64,7 @@ bun add -d drizzle-kit @types/bun typescript
     "module": "ESNext",
     "moduleResolution": "bundler",
     "lib": ["ESNext", "DOM"],
-    "types": ["bun-types"],
+    "types": ["bun"],
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
@@ -96,7 +96,7 @@ SYNC_INTERVAL_HOURS=6
 - [ ] **Step 5: Commit**
 
 ```bash
-git add package.json bun.lockb tsconfig.json .env.example
+git add package.json bun.lock tsconfig.json .env.example
 git commit -m "chore: bun project init with deps and tsconfig"
 ```
 
